@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:isLoading="@{viewModel.loadingPic}"
+                android:contentDescription="@{viewModel.image.title}"
                 android:layout_gravity="center"
                 tools:visibility="visible" />
 

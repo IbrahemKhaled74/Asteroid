@@ -21,7 +21,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-//    var webServices: WebServices, var dataBaseManager: DataBaseManager
+    var webServices: WebServices,
+//    var dataBaseManager: DataBaseManager
 var  asteroidDataSource: AsteroidDataSource,
 var pictureDataSource: PictureDataSource
 ) : ViewModel() {
@@ -44,6 +45,7 @@ var pictureDataSource: PictureDataSource
         viewModelScope.launch {
             setData()
             getPicOfDay()
+//            test()
         }
     }
 
@@ -93,6 +95,17 @@ var pictureDataSource: PictureDataSource
         _loadingPic.postValue(false)
 
     }
+//    suspend fun test(){
+//        val test=webServices.getAsteroid(
+//            getToday(), getSevenDaysLater(),Constants.API_KEY
+//        )
+//        val data= parseAsteroidsJsonResult(
+//            JSONObject(test)
+//        )
+//        Log.e("TAG", "test: $data ", )
+//
+//
+//    }
 
 
 }
