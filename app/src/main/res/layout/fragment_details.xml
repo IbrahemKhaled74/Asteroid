@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="asteroid"
+            type="com.example.egfwd_secound_project.ui.model.Asteroid" />
+
+        <variable
+            name="viewModel"
+            type="com.example.egfwd_secound_project.ui.fragment.details.DetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.details.Details">
+
+        <ImageView
+            android:id="@+id/image_of_the_day"
+            asteroidStatusImage="@{asteroid.potentiallyHazardous}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/asteroid_safe" />
+
+        <LinearLayout
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/black"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_of_the_day">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/close_approach_date"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/close_approach_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{asteroid.closeApproachDate}"
+                    android:textColor="@color/white"
+                    tools:text="2020-02-01" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/liner_absolute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/absolute_magnitude"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/absolute_magnitude_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/white"
+                        app:astronomicalUnitText="@{asteroid.absoluteMagnitude}"
+                        tools:text="2020-02-01" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/help_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()->viewModel.showDialog()}"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_help_circle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/estimated_diameter"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/estimated_diameter_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/white"
+                    app:kmUnitText="@{asteroid.estimatedDiameter}"
+                    tools:text="2020-02-01" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/relative_velocity"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/relative_velocity_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/white"
+                    app:velocityText="@{asteroid.relativeVelocity}"
+                    tools:text="2020-02-01" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/distance_from_earth"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/distance_from_earth_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/white"
+                    app:astronomicalUnitText="@{asteroid.distanceFromEarth}"
+                    tools:text="2020-02-01" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
