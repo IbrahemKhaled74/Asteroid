@@ -98,6 +98,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="@{()->viewModel.showDialog()}"
                     android:padding="16dp"
+                    android:contentDescription="@string/help_Button"
                     android:src="@drawable/ic_help_circle" />
 
             </LinearLayout>

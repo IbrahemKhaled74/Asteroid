@@ -18,6 +18,8 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+        buildConfigField 'String', 'NASA_API_KEY', API_KEY
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -42,13 +44,9 @@ android {
         correctErrorTypes true
     }
 
-
 }
 
 dependencies {
-    def lifecycle_version = "2.5.1"
-    def nav_version = "2.5.3"
-    def room_version = "2.4.3"
 
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"

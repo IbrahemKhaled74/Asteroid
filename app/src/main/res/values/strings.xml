@@ -8,6 +8,7 @@
     <string name="astronomical_unit_format">%f au</string>
     <string name="km_unit_format">%f km</string>
     <string name="km_s_unit_format">%f km/s</string>
+    <string name="help_Button">Help Button</string>
     <string name="image_of_the_day">Image of the Day</string>
     <string name="astronomical_unit_explanation_button">Astronomical unit definition</string>
     <string name="potentially_hazardous_asteroid_image">Potentially hazardous asteroid image</string>
@@ -17,5 +18,8 @@
     <string name="estimated_diameter">Estimated diameter</string>
     <string name="relative_velocity">Relative velocity</string>
     <string name="distance_from_earth">Distance from earth</string>
+    <string name="saved_asteroids">Saved Asteroids</string>
+    <string name="today_asteroids">Today Asteroids</string>
+    <string name="next_week_asteroids">Next Week Asteroids</string>
 
 </resources>

@@ -3,10 +3,8 @@ package com.example.egfwd_secound_project.ui.fragment.main
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
@@ -50,6 +48,8 @@ class Main : Fragment() {
         recyclerView.adapter = adapter
         binding.lifecycleOwner = this
         binding.viewModel = mainViewModel
+        setHasOptionsMenu(true)
+
         adapter.onClickListener = object : AsteroidAdapter.OnClickListener {
             override fun onItemClicked(item: Asteroid?, position: Int) {
                 findNavController().navigate(MainDirections.actionMainToDetails(item))
@@ -58,6 +58,25 @@ class Main : Fragment() {
         }
         return binding.root
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.asteroid_filter, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.show_today_menu -> mainViewModel.asteroidDaily.observe(viewLifecycleOwner) {
+                adapter.setNewData(it)
+            }
+            R.id.show_week_menu -> mainViewModel.asteroidWeek.observe(viewLifecycleOwner) {
+                adapter.setNewData(it)
+            }
+            R.id.show_all_menu -> mainViewModel.asteroid.observe(viewLifecycleOwner) {
+                adapter.setNewData(it)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 

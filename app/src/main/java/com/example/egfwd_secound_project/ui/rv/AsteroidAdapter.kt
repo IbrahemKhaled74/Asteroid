@@ -11,7 +11,8 @@ import com.example.egfwd_secound_project.databinding.AsteroidItemBinding
 import com.example.egfwd_secound_project.databinding.FragmentMainBinding
 import com.example.egfwd_secound_project.ui.model.Asteroid
 
-class AsteroidAdapter(var asteroidItems:List<Asteroid>?=null) :Adapter<AsteroidAdapter.viewHolder>() {
+class AsteroidAdapter(var asteroidItems:List<Asteroid>?=null) :
+    Adapter<AsteroidAdapter.viewHolder>() {
 
     fun setNewData(newAsteroidItems: List<Asteroid>?){
         val diffCallBack=DiffUtil(asteroidItems,newAsteroidItems)

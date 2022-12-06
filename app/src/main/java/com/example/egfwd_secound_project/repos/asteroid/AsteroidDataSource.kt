@@ -7,6 +7,8 @@ interface AsteroidDataSource {
                             endDate:String,
                             apiKey:String,
     ): List<Asteroid>
+    suspend fun getWeekAsteroid(start:String,end:String):List<Asteroid>
+    suspend fun getTodayAsteroid(today: String):List<Asteroid>
 
 }
 interface AsteroidOnlineDataSource{
@@ -20,5 +22,8 @@ interface AsteroidOfflineDataSource{
     suspend fun refreshAsteroidData():List<Asteroid>
     fun deleteAll()
     fun addAsteroid(asteroid: Array<Asteroid>)
+    suspend fun getWeekAsteroid(start:String,end:String):List<Asteroid>
+    suspend fun getTodayAsteroid(startDate: String):List<Asteroid>
+
 
 }

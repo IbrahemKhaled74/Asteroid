@@ -18,7 +18,7 @@ class PictureDataSourceImpl @Inject constructor (
             return pictureOfflineDataSource.getPhotoOfDay()
 
         } catch (ex: Exception) {
-            throw ex
+            return pictureOfflineDataSource.getPhotoOfDay()
         }
     }
 }

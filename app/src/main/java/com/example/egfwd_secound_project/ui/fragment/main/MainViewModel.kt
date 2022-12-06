@@ -21,8 +21,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    var webServices: WebServices,
-//    var dataBaseManager: DataBaseManager
 var  asteroidDataSource: AsteroidDataSource,
 var pictureDataSource: PictureDataSource
 ) : ViewModel() {
@@ -33,6 +31,15 @@ var pictureDataSource: PictureDataSource
     private val _image = MutableLiveData<PictureOfDay>()
     val image: LiveData<PictureOfDay>
         get() = _image
+
+    private val _asteroidWeek = MutableLiveData<List<Asteroid>>()
+    val asteroidWeek: LiveData<List<Asteroid>>
+        get() = _asteroidWeek
+
+    private val _asteroidDaily = MutableLiveData<List<Asteroid>>()
+    val asteroidDaily: LiveData<List<Asteroid>>
+        get() = _asteroidDaily
+
     private val _loadingAsteroid = MutableLiveData<Boolean>()
     val loadingAsteroid: LiveData<Boolean>
         get() = _loadingAsteroid
@@ -43,13 +50,18 @@ var pictureDataSource: PictureDataSource
 
     init {
         viewModelScope.launch {
-            setData()
-            getPicOfDay()
-//            test()
+            try {
+                getAllAsteroid()
+                getPicOfDay()
+                getWeekAsteroid()
+                getDailyAsteroid()
+            }catch (ex:Exception){
+
+            }
         }
     }
 
-    private suspend fun setData() {
+    private suspend fun getAllAsteroid() {
 
         withContext(Dispatchers.IO) {
             _loadingAsteroid.postValue(true)
@@ -58,21 +70,9 @@ var pictureDataSource: PictureDataSource
                 getSevenDaysLater(),
                 Constants.API_KEY
             )
-            Log.e("TAG", "$asteroid: ", )
             _asteroid.postValue(asteroid)
 
-//            val asteroid = webServices.getAsteroid(
-//                getToday(), getSevenDaysLater(), Constants.API_KEY
-//            )
-//            val data = parseAsteroidsJsonResult(
-//                JSONObject(asteroid)
-//            )
-//            dataBaseManager.asteroidDao().deleteAll()
-//            dataBaseManager.asteroidDao().insertAll(*data.asAsteroidEntities())
-//            val asteroidItem = dataBaseManager.asteroidDao().getAllAsteroids()
-//            Log.e("TAG", "$asteroidItem: ")
-//
-//            _asteroid.postValue(asteroidItem)
+
 
         }
         _loadingAsteroid.postValue(false)
@@ -85,27 +85,30 @@ var pictureDataSource: PictureDataSource
             val photo=pictureDataSource.getPhotoOfDay(Constants.API_KEY)
             _image.postValue(photo)
 
-//            val image = webServices.getImageOfDay(Constants.API_KEY)
-//            dataBaseManager.pictureOfDayDao().insertPictureOfDay(image)
-//            val dbImage = dataBaseManager.pictureOfDayDao().getPictureOfDay()
-//            Log.e("TAG", "$dbImage: ")
-//
-//            _image.postValue(dbImage)
         }
         _loadingPic.postValue(false)
 
     }
-//    suspend fun test(){
-//        val test=webServices.getAsteroid(
-//            getToday(), getSevenDaysLater(),Constants.API_KEY
-//        )
-//        val data= parseAsteroidsJsonResult(
-//            JSONObject(test)
-//        )
-//        Log.e("TAG", "test: $data ", )
-//
-//
-//    }
+    private suspend fun getWeekAsteroid(){
+        withContext(Dispatchers.IO) {
+            val asteroid=asteroidDataSource.getWeekAsteroid(
+              start = getToday(), end =  getSevenDaysLater(),
+            )
+            _asteroidWeek.postValue(asteroid)
+
+        }
+    }
+    private suspend fun getDailyAsteroid(){
+        withContext(Dispatchers.IO) {
+            val asteroid=asteroidDataSource.getTodayAsteroid(
+                getToday(),
+            )
+            _asteroidDaily.postValue(asteroid)
+
+        }
+    }
+
+
 
 
 }

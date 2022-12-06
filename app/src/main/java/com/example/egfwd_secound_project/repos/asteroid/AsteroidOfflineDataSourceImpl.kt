@@ -31,4 +31,22 @@ class AsteroidOfflineDataSourceImpl @Inject constructor(private val asteroidDAO:
         }
 
     }
+
+    override suspend fun getWeekAsteroid(start: String,end:String): List<Asteroid> {
+        try {
+            return asteroidDAO.getWeekAsteroids(start,end)
+
+        }catch (ex:Exception){
+            throw ex
+        }
+    }
+
+    override suspend fun getTodayAsteroid(startDate: String): List<Asteroid> {
+        try {
+            return asteroidDAO.getTodayAsteroids(startDate)
+        } catch (ex: Exception) {
+            throw ex
+
+        }
+    }
 }

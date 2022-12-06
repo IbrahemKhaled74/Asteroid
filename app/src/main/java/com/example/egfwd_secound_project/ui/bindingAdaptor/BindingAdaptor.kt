@@ -21,13 +21,20 @@ fun ImageView.pictureOfDay(src:PictureOfDay?) {
             .error(R.drawable.ic_help_circle)
             .into(this)
     }
+    this.contentDescription=src?.title
 }
 @BindingAdapter("app:statusIcon")
 fun ImageView.bindAsteroidStatusImage( isHazardous: Boolean) {
     if (isHazardous) {
         this.setImageResource(R.drawable.ic_status_potentially_hazardous)
+        this.contentDescription = this.context.getString(
+            R.string.potentially_hazardous_asteroid_image
+        )
     } else {
         this.setImageResource(R.drawable.ic_status_normal)
+        this.contentDescription = this.context.getString(
+            R.string.not_hazardous_asteroid_image
+        )
     }
 }
 
@@ -35,8 +42,14 @@ fun ImageView.bindAsteroidStatusImage( isHazardous: Boolean) {
 fun ImageView.bindDetailsStatusImage( isHazardous: Boolean) {
     if (isHazardous) {
         this.setImageResource(R.drawable.asteroid_hazardous)
+        this.contentDescription = this.context.getString(
+            R.string.potentially_hazardous_asteroid_image
+        )
     } else {
         this.setImageResource(R.drawable.asteroid_safe)
+        this.contentDescription = this.context.getString(
+            R.string.not_hazardous_asteroid_image
+        )
         }
 }
 

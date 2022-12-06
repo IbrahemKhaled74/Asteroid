@@ -58,13 +58,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/asteroidRV"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_of_day"
             app:listData="@{viewModel.asteroid}"
-            tools:listitem="@layout/asteroid_item" />
+            tools:listitem="@layout/asteroid_item"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
         <ProgressBar
             android:layout_width="wrap_content"
