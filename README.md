@@ -27,3 +27,27 @@ https://user-images.githubusercontent.com/101200745/209376480-10e12ffa-75b8-4b60
 * [ConstraintLayout](https://developer.android.com/training/constraint-layout)
 * [Repository Pattern](https://medium.com/swlh/repository-pattern-in-android-c31d0268118c)
 * [Dependency Injection (Hilt)](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project.
+
+# Network Calls
+* [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
+
+# Database
+* [Room](https://developer.android.com/training/data-storage/room) - The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
+
+# Background tasks
+* [Kotlin Coroutines](https://bit.ly/3Kq3ec3) - A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously.
+
+# Code Architecture 
+* [MVVM Architecture Pattern](https://developer.android.com/jetpack/guide)
+<p align="center">
+
+<img src="https://user-images.githubusercontent.com/86564639/166422026-4a5f4f9b-44b6-44c7-b4c6-852be532b41f.png">
+</p>
+
+* [Clean Architecture](https://developer.android.com/topic/architecture) 
+
+
+![http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/](https://github.com/android10/Sample-Data/blob/master/Android-CleanArchitecture/clean_architecture.png)
+
+
+
